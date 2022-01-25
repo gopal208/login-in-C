@@ -30,77 +30,73 @@ FILE *fp;
 
 
 int main()
-
 {
     int ch,i;
 
-  while(1)
+    while(1)
+    {
+      clrscr();
 
-{
-clrscr();
+      gotoxy(20,5);
 
-gotoxy(20,5);
+      printf("____Programming Made Easy_____");
 
-printf("____Programming Made Easy_____");
+      gotoxy(28,7);
 
-gotoxy(28,7);
+      printf("Yours Welcome Here...........");
 
-printf("Yours Welcome Here...........");
+      gotoxy(28,9);
+      printf("Press F1 For Login");
 
-gotoxy(28,9);
-printf("Press F1 For Login");
+      gotoxy(28,11);
 
-gotoxy(28,11);
+      printf("Press F2 For Signup");
 
-printf("Press F2 For Signup");
+      gotoxy(28,13);
 
-gotoxy(28,13);
+      printf("Press ESC For Exit");
+      gotoxy(20,15);
 
-printf("Press ESC For Exit");
-gotoxy(20,15);
+      printf("___********_____\n");
+      getch();
+      ch=getch();
 
-printf("___********_____\n");
-getch();
-ch=getch();
+  switch(ch)
 
-switch(ch)
+  {
+     case F1:
+             clrscr();
 
-{
-case F1:
-clrscr();
+             gotoxy(10,14);
 
-gotoxy(10,14);
+             for(int i=0;i<40;i++)
 
-for(int i=0;i<40;i++)
+              {
+                 printf("_");
+                 delay(40);
+              }
 
-{
- printf("_");
- delay(40);
-}
+                login();
+                break;
 
-login();
-break;
+     case F2:
+             clrscr();
 
-case F2:
-clrscr();
+             gotoxy(10,14);
 
-gotoxy(10,14);
+             for(int i=0;i<40;i++)
+             {
+               printf("_");
+               delay(40);
+               }
 
-for(int i=0;i<40;i++)
+              signup();
+              break;
 
-{
- printf("_");
- delay(40);
-}
-
-signup();
-break;
-
-case ESC:
-exit(0);
-
-break;
-}
+    case ESC:
+            exit(0);
+            break;
+  }
 
 }
 
@@ -187,47 +183,44 @@ break;
 
 
 
- void signup(){
+ void signup()
+ {
    char c;
    int i;
-
-  fp=fopen("record.bin","ab");
-
+   fp=fopen("record.bin","ab");
    clrscr();
-  gotoxy(23,5);
+   gotoxy(23,5);
+   printf("_____SignUp Zone____");
+   gotoxy(23,7);
+    printf("Set UserName           :  ");
 
- printf("_____SignUp Zone____");
+    gets(s.username);
 
-gotoxy(23,7);
-  printf("Set UserName           :  ");
-
- gets(s.username);
-
-  gotoxy(23,9);
-  printf("Set Password:  ");
-  for(i=0;c=getche()!=13;i++)
-  {
-  s.password[i]=c;
-  }
+    gotoxy(23,9);
+    printf("       Set Password:  ");
+     
+     //This for loop use for setting password
+     for(i=0;c=getche()!=13;i++)
+     {
+       s.password[i]=c;
+     }
 
   gotoxy(23,11);
 
   printf("Press Enter to continue.........");
 
- if(getch()==13)
+     if(getch()==13)
 
-{
-   fwrite(&s,sizeof(s),1,fp);
+     {
+      fwrite(&s,sizeof(s),1,fp);
 
-     gotoxy(23,13);
-   cprintf("\nInforsmations Saved....");
-   }
+       gotoxy(23,13);
+       cprintf("\nInforsmations Saved....");
+     }
 
   else
    return;
 
- fclose(fp);
-
-
-getch();
+    fclose(fp);//fclose function used close open file
+    getch();
   }
